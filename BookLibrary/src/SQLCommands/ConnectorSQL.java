@@ -7,7 +7,7 @@ public class ConnectorSQL {
     public ConnectorSQL(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "{UR PASS}");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "mhndeso");
         }catch(Exception e){
             e.printStackTrace();
         }
