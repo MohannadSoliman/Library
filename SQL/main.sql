@@ -7,7 +7,10 @@ create table book(
     publisher varchar(30) not null,
     publication_year date,
     price double not null,
-    category enum("Science", "Religion", "Art", "History", "Geography") not null
+    category enum("Science", "Religion", "Art", "History", "Geography") not null,
+    index idx_title (title),
+    index idx_category (category),
+    index idx_publisher (publisher)
 );
 create table publisher(
 	publisher_name varchar(20) primary key,
@@ -33,6 +36,7 @@ create table users(
     email varchar(30) not null,
     phone varchar(20) not null,
     user_role enum("Manager", "Customer")
+    
 );
 create table book_purchase(
 	purchase_id int primary key auto_increment,
@@ -42,7 +46,7 @@ create table book_purchase(
     purchase_price double not null,
     purchase_date date not null
 );
-
+SHOW INDEX FROM book FROM library;
 insert into book values("1", 10, 50, "The LOL", "The LOL publisher", "1990-2-2", 100, "Science");
 insert into book values("2", 30, 120, "The LOL2", "The LOL publisher2", "1990-2-2", 100, "History");
 
@@ -66,7 +70,7 @@ alter table book_purchase add constraint fk_purchase_isbn foreign key (isbn) ref
 alter table book_purchase add constraint fk_purchase_username foreign key (username) references users(username);
 
 call add_book("6", 5, 50, "The LOL4", "The LOL publisher3", "1990-2-2", 100, "History");
-
+select title from book use index(idx_title) where title = "The LOL";
 call buy_book(2, "The LOL username", 60);
 
 select * from book;

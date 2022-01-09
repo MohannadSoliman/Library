@@ -19,13 +19,3 @@ begin
     end if;
 end //
 DELIMITER ;
-/*
-isbn int primary key,
-    threshold int not null,
-    quantity int not null,
-    title varchar(20) not null,
-    publisher varchar(30) not null,
-    publication_year date,
-    price double not null,
-    category enum("Science", "Religion", "Art", "History", "Geography") not null
-    */
