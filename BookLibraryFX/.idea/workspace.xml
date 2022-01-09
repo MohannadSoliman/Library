@@ -5,24 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8677f7c-edb9-4ee8-8dbb-5f8633580134" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/AddBookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/EditProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/UserMainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/AddBook.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/EditProfile.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/EditUser.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/UserMain.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/ManagerMainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/ManagerMain.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/EditProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/booklibraryfx/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/SignUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/booklibraryfx/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/EditProfileController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/HelloApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/HelloController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/Settings.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/Settings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/SignUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/booklibraryfx/SignUpController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

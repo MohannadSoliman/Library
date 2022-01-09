@@ -11,6 +11,7 @@ public class Settings {
     public static Scene customerScene;
     public static Scene signUpScene;
     public static Scene editUser;
-    public static User user;
-    public static Manager manager;
+    public static Scene managerScene;
+    public static User user = null;
+    public static Manager manager = null;
 }

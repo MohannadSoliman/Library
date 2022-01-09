@@ -5,11 +5,7 @@ import Backend.Entities.User;
 import Backend.SQLCommands.ConnectorSQL;
 import Backend.SQLCommands.UserSQL;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -49,6 +45,7 @@ public class HelloController {
             }else{
                 if(user.getRole().equalsIgnoreCase("Customer")){
                     Settings.user = user;
+                    Settings.manager = null;
                     try {
                         switchToMainCustomer();
                     } catch (IOException e) {
@@ -56,6 +53,12 @@ public class HelloController {
                     }
                 }else{
                     Settings.manager = (Manager) user;
+                    Settings.user = null;
+                    try {
+                        switchToMainManager();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -68,6 +71,11 @@ public class HelloController {
     }
     public void switchToMainCustomer() throws IOException {
         Settings.stage.setScene(Settings.customerScene);
+        Settings.stage.setTitle("Customer");
+        Settings.stage.show();
+    }
+    public void switchToMainManager() throws  IOException{
+        Settings.stage.setScene(Settings.managerScene);
         Settings.stage.setTitle("Customer");
         Settings.stage.show();
     }
