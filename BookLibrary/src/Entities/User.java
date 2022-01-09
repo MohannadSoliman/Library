@@ -4,7 +4,6 @@ import DTOs.UserDTO;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class User {
     private String username;
@@ -119,7 +118,7 @@ public class User {
         int ccYear = Integer.parseInt(ccexpiryComponents[0]);
         int ccMonth = Integer.parseInt(ccexpiryComponents[1]);
         // then validate year and number size
-        // if valid then call Purchase.checkout()
+        // if valid then call PurchaseSQL.checkout()
         return true;
     }
 }
