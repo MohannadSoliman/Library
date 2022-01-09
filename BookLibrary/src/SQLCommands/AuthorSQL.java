@@ -52,9 +52,9 @@ public class AuthorSQL {
         return new Author(isbn, authorName);
     }
 
-    static public List<String> getAuthorList(int isbn){
+    static public ArrayList<String> getAuthorList(int isbn){
         ConnectorSQL connection = new ConnectorSQL();
-        List<String> authors = new ArrayList<>();
+        ArrayList<String> authors = new ArrayList<>();
         if (isbn == 0){
             return null;
         }

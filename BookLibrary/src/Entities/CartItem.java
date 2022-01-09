@@ -26,4 +26,24 @@ public class CartItem {
     public int getIsbn() {
         return isbn;
     }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setSinglePrice(double singlePrice) {
+        this.singlePrice = singlePrice;
+    }
 }

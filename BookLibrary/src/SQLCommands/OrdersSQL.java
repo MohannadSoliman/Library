@@ -14,12 +14,12 @@ public class OrdersSQL {
         if (order.getQuantity() == 0){
             return false;
         }try {
-            String query = " insert into book_order (order_id, isbn, quantity, purchase_date)" + " values (?, ?, ?, ?)";
+            String query = " insert into book_order (isbn, quantity, purchase_date)" + " values (?, ?, ?)";
             PreparedStatement preparedStmt = ConnectorSQL.connection.prepareStatement(query);
-            preparedStmt.setInt(1, order.getOrderID());
-            preparedStmt.setInt(2, order.getIsbn());
-            preparedStmt.setInt(3, order.getQuantity());
-            preparedStmt.setString(4, order.getDate());
+          //  preparedStmt.setInt(1, order.getOrderID());
+            preparedStmt.setInt(1, order.getIsbn());
+            preparedStmt.setInt(2, order.getQuantity());
+            preparedStmt.setString(3, order.getDate());
             preparedStmt.execute();
         }catch (SQLException throwables){
             throwables.printStackTrace();

@@ -1,5 +1,7 @@
+import DTOs.BookDTO;
 import DTOs.UserDTO;
 import Entities.User;
+import SQLCommands.BookSQL;
 import SQLCommands.ConnectorSQL;
 import SQLCommands.UserSQL;
 
@@ -39,9 +41,19 @@ public class Main {
 //        System.out.println(UserSQL.signup(userDTO));
 //        System.out.println(UserSQL.promote("The LOL new"));
 //        System.out.println(UserSQL.update("The LOL new", "new address update", "address"));
-        System.out.println(UserSQL.getUser("The LOL new").getAddress());
-        System.out.println(UserSQL.getUser("The LOL newError").getAddress());
-
+//        BookDTO bookDTO = new BookDTO();
+//        bookDTO.isbn = 123;
+//        bookDTO.title = "test title";
+//        bookDTO.quantity = 12;
+//        bookDTO.threshold = 5;
+//        bookDTO.publisher = "The LOL publisher";
+//        bookDTO.publicationYear = "1234-01-21";
+//        bookDTO.price = 21;
+//        bookDTO.category = "Religion";
+//        bookDTO.authors = null;
+//        BookSQL.addBook(bookDTO);
+//        System.out.println(BookSQL.getBook("The LOL publisher", "publisher").get(1).getQuantity());
+//        System.out.println(BookSQL.getAllBooks().get(2).getTitle());
     }
 
 }

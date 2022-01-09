@@ -1,6 +1,11 @@
 package Entities;
 
+import DTOs.BookDTO;
 import DTOs.UserDTO;
+import SQLCommands.BookSQL;
+import SQLCommands.OrdersSQL;
+import SQLCommands.StatisticsSQL;
+import SQLCommands.UserSQL;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,37 +16,45 @@ public class Manager extends User{
         super(userDTO);
     }
 
-    public boolean addNewBook(Book book){
-        // add new book using sql
+    public boolean addNewBook(BookDTO bookDTO){
+        BookSQL.addBook(bookDTO);
         return true;
     }
-    public boolean modifyExistingBook(int isbn, String target, String attribute){
+    public boolean modifyExistingBook(String isbn, String target, String attribute){
         // use the update command in the sql commands
+        BookSQL.updateBook(isbn, target, attribute);
         return true;
     }
-    public boolean placeOrder(int isbn, int quantity){
+    public boolean placeOrder(String isbn, int quantity){
+        // check if book already exists before ordering extra
+        ArrayList<Book> books = BookSQL.getBook(isbn, "isbn");
+        if(books == null) return false;
+
         LocalDate dateObj = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String date = dateObj.format(formatter);
-        Order order = new Order(0, isbn, quantity, date);
+        Order order = new Order(0, Integer.parseInt(isbn), quantity, date);
         // then use sql command with the order
-        return true;
+        return OrdersSQL.addOrder(order);
     }
     public boolean confirmOrder(int orderID){
         // use sql command order confirmation
-        return true;
+        return OrdersSQL.confirmOrder(orderID);
     }
     public boolean promoteUser(String username){
         // use the sql command for upgrading
-        return true;
+        return UserSQL.promote(username);
     }
-    public double totalSales(){
+    public ArrayList<Purchase> getTotalSales(){
         // get total sales sql command
-        return 0;
+        return StatisticsSQL.getTotalSales();
     }
-    public ArrayList<Book> viewTopSellingBooks(){
+    public ArrayList<BookSale> getTopSellingBooks(){
         // use sql command to get the books
-        return null;
+        return StatisticsSQL.getTopTenBooks();
+    }
+    public ArrayList<TopUser> getTopUsers(){
+        return StatisticsSQL.getTopFiveUsers();
     }
 
 }

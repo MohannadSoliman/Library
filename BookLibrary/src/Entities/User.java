@@ -1,6 +1,9 @@
 package Entities;
 
 import DTOs.UserDTO;
+import SQLCommands.BookSQL;
+import SQLCommands.PurchaseSQL;
+import SQLCommands.UserSQL;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -72,14 +75,22 @@ public class User {
         // call the sql command in UserSQL
         // then return true if everything worked
         // else return false
-        return true;
+        return UserSQL.update(this.username, target, attribute);
     }
     public ArrayList<Book> search(String target, String attribute){
         // sql command to return books and create entities and fill each with book content
-        return null;
+        return BookSQL.getBook(target, attribute);
+
     }
-    public boolean addBook(String isbn){
-        // look for book then create book instance then insert into cart as cart item
+    public boolean addBook(String isbn, int quantity){
+        Book book = BookSQL.getBook(isbn, "isbn").get(0);
+        CartItem cartItem = new CartItem();
+        cartItem.setBook(book);
+        if(quantity > book.getQuantity()) return false;
+        cartItem.setQuantity(quantity);
+        cartItem.setIsbn(book.getIsbn());
+        cartItem.setSinglePrice(book.getPrice());
+        cartItem.setTotalPrice(book.getPrice() * quantity);
         return true;
     }
     public double viewIndividualPrice(int isbn){
@@ -119,6 +130,7 @@ public class User {
         int ccMonth = Integer.parseInt(ccexpiryComponents[1]);
         // then validate year and number size
         // if valid then call PurchaseSQL.checkout()
+        PurchaseSQL.checkout(this);
         return true;
     }
 }

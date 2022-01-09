@@ -41,27 +41,28 @@ public class BookSQL {
         }
         return true;
     }
-    public Book getBook(String target, String attribute){
+    public static ArrayList<Book> getBook(String target, String attribute){
+        ArrayList<Book> books = new ArrayList<>();
         String query = "select * from book where "+attribute+" = (?)";
         try {
             PreparedStatement ps = ConnectorSQL.connection.prepareStatement(query);
             ps.setString(1, target);
             ResultSet response = ps.executeQuery();
-            if (!response.next()) {
-                return null;
+            while(response.next()){
+                BookDTO bookDTO = new BookDTO();
+                bookDTO.fromSQLtoBook(response);
+                Book book = new Book(bookDTO);
+                // from shehab's work
+                book.setAuthors(AuthorSQL.getAuthorList(book.getIsbn()));
+                books.add(book);
             }
-            BookDTO bookDTO = new BookDTO();
-            bookDTO.fromSQLtoBook(response);
-            Book book = new Book(bookDTO);
-            // from shehab's work
-           // book.setAuthors(AuthorSQL.getAuthorList(book.getIsbn()));
-            return book;
+            return books;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-    public ArrayList<Book> getAllBooks(){
+    public static ArrayList<Book> getAllBooks(){
         ArrayList<Book> books = new ArrayList<>();
         String query = "select * from book";
         try {
@@ -73,14 +74,9 @@ public class BookSQL {
                 bookDTO.fromSQLtoBook(response);
                 Book book = new Book(bookDTO);
                 // from shehab's work
-                // book.setAuthors(AuthorSQL.getAuthorList(book.getIsbn()));
+                book.setAuthors(AuthorSQL.getAuthorList(book.getIsbn()));
                 books.add(book);
             }
-            BookDTO bookDTO = new BookDTO();
-            bookDTO.fromSQLtoBook(response);
-            Book book = new Book(bookDTO);
-            // from shehab's work
-            // book.setAuthors(AuthorSQL.getAuthorList(book.getIsbn()));
             return books;
         } catch (Exception e) {
             e.printStackTrace();

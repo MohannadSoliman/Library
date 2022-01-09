@@ -12,15 +12,17 @@ public class Book {
     private String PublicationYear;
     private double price;
     private String category;
+    private int quantity;
 
     public Book(BookDTO bookDTO) {
         this.isbn = bookDTO.isbn;
         this.title = bookDTO.title;
         this.publisher = bookDTO.publisher;
         this.authors = bookDTO.authors;
-        PublicationYear = bookDTO.publicationYear;
+        this.PublicationYear = bookDTO.publicationYear;
         this.price = bookDTO.price;
         this.category = bookDTO.category;
+        this.quantity = bookDTO.quantity;
     }
 
     public int getIsbn() {
@@ -49,6 +51,14 @@ public class Book {
 
     public String getCategory() {
         return category;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public void setIsbn(int isbn) {
