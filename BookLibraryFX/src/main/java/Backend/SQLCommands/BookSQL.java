@@ -66,7 +66,11 @@ public class BookSQL {
     }
     public static ArrayList<Book> getBook(String target, String attribute){
         ArrayList<Book> books = new ArrayList<>();
-        String query = "select * from book where "+attribute+" = (?)";
+        String index = "";
+        if(attribute.equalsIgnoreCase("Title")) index = "use index(idx_title)";
+        if(attribute.equalsIgnoreCase("Category")) index = "use index(idx_category)";
+        if(attribute.equalsIgnoreCase("Publisher")) index = "use index(idx_title)";
+        String query = "select * from book "+ index +" where "+attribute+" = (?)";
         try {
             PreparedStatement ps = ConnectorSQL.connection.prepareStatement(query);
             ps.setString(1, target);
