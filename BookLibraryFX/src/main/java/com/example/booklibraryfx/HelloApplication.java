@@ -13,9 +13,13 @@ public class HelloApplication extends Application {
         Settings.stage = stage;
         FXMLLoader fxmlLoaderLogin = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
         FXMLLoader fxmlLoaderSignUp = new FXMLLoader(HelloApplication.class.getResource("SignUp.fxml"));
+        FXMLLoader fxmlLoaderCustomer = new FXMLLoader(HelloApplication.class.getResource("UserMain.fxml"));
+        FXMLLoader fxmlLoaderEditProfile = new FXMLLoader(HelloApplication.class.getResource("EditUser"));
+        Settings.customerScene = new Scene(fxmlLoaderCustomer.load());
         Settings.loginScene = new Scene(fxmlLoaderLogin.load());
         Settings.signUpScene = new Scene(fxmlLoaderSignUp.load());
-        stage.setTitle("Book Library");
+        Settings.editUser = new Scene(fxmlLoaderEditProfile.load());
+        stage.setTitle("Login");
         stage.setScene(Settings.loginScene);
         stage.show();
     }

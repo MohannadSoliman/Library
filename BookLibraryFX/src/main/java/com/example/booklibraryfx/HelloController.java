@@ -1,5 +1,9 @@
 package com.example.booklibraryfx;
 
+import Backend.Entities.Manager;
+import Backend.Entities.User;
+import Backend.SQLCommands.ConnectorSQL;
+import Backend.SQLCommands.UserSQL;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,19 +35,43 @@ public class HelloController {
         return false;
     }
     public void login(){
+        ConnectorSQL csql = new ConnectorSQL();
         String username = loginUsernameField.getText();
         String password = loginPasswordField.getText();
         if(!isPasswordValid(password)){
             passwordError.setText("Password must be more than 8 characters!");
+        }else if(username.length() * password.length() == 0){
+            passwordError.setText("Please Fill All Empty Fields!");
+        }else{
+            User user = UserSQL.login(username, password);
+            if(user == null){
+                passwordError.setText("Username or Password are Wrong!");
+            }else{
+                if(user.getRole().equalsIgnoreCase("Customer")){
+                    Settings.user = user;
+                    try {
+                        switchToMainCustomer();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    Settings.manager = (Manager) user;
+                }
+            }
         }
-        loginUsernameField.setText("");
-        loginPasswordField.setText("");
+
     }
     public void switchToSignUp() throws IOException {
         Settings.stage.setScene(Settings.signUpScene);
         Settings.stage.setTitle("Sign Up");
         Settings.stage.show();
     }
+    public void switchToMainCustomer() throws IOException {
+        Settings.stage.setScene(Settings.customerScene);
+        Settings.stage.setTitle("Customer");
+        Settings.stage.show();
+    }
+
 
 //                              Sign up
 //    @FXML

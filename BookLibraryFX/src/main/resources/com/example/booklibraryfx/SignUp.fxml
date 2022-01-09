@@ -4,36 +4,43 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.booklibraryfx.SignUpController">
    <children>
-      <TextField layoutX="117.0" layoutY="107.0" />
+      <TextField fx:id="firstNameField" layoutX="117.0" layoutY="107.0" />
       <Label layoutX="41.0" layoutY="110.0" prefHeight="18.0" prefWidth="76.0" text="First Name :" />
-      <TextField layoutX="358.0" layoutY="106.0" />
-      <Label layoutX="284.0" layoutY="111.0" text="Last Name :" />
+      <TextField fx:id="lastNameField" layoutX="358.0" layoutY="106.0" />
+      <Label layoutX="283.0" layoutY="110.0" text="Last Name :" />
       <Label layoutX="38.0" layoutY="191.0" prefHeight="18.0" prefWidth="62.0" text="Username :" />
-      <TextField layoutX="117.0" layoutY="187.0" />
-      <TextField layoutX="119.0" layoutY="145.0" prefHeight="26.0" prefWidth="391.0" />
+      <TextField fx:id="usernameField" layoutX="117.0" layoutY="187.0" />
+      <TextField fx:id="emailField" layoutX="119.0" layoutY="145.0" prefHeight="26.0" prefWidth="391.0" />
       <Label layoutX="41.0" layoutY="149.0" prefHeight="18.0" prefWidth="56.0" text="Email :" />
-      <Label layoutX="287.0" layoutY="191.0" text="Password :" />
-      <TextField layoutX="358.0" layoutY="187.0" />
+      <Label layoutX="286.0" layoutY="191.0" text="Password :" />
       <Label alignment="TOP_CENTER" layoutX="227.0" layoutY="14.0" text="Sign Up">
          <font>
             <Font size="42.0" />
          </font>
       </Label>
       <Label layoutX="38.0" layoutY="230.0" prefHeight="18.0" prefWidth="62.0" text="Address :" />
-      <Label layoutX="287.0" layoutY="233.0" text="Phone :" />
-      <TextField layoutX="117.0" layoutY="227.0" />
-      <TextField layoutX="358.0" layoutY="229.0" />
-      <Button alignment="BOTTOM_CENTER" layoutX="272.0" layoutY="279.0" mnemonicParsing="false" text="SignUp">
+      <Label layoutX="307.0" layoutY="233.0" text="Phone :" />
+      <TextField fx:id="addressField" layoutX="117.0" layoutY="227.0" />
+      <TextField fx:id="phoneField" layoutX="358.0" layoutY="229.0" />
+      <Button alignment="BOTTOM_CENTER" layoutX="272.0" layoutY="279.0" mnemonicParsing="false" onAction="#signUp" text="Sign Up">
          <cursor>
             <Cursor fx:constant="NONE" />
          </cursor>
       </Button>
       <Hyperlink fx:id="alreadyExist" layoutX="239.0" layoutY="329.0" onAction="#switchToLogin" text="Already a user? Login" />
+      <PasswordField fx:id="passwordField" layoutX="359.0" layoutY="187.0" />
+      <Label fx:id="errorMessage" layoutX="186.0" layoutY="76.0" textFill="RED" />
+      <Label fx:id="successMessage" layoutX="178.0" layoutY="74.0" textFill="#41bc1e">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

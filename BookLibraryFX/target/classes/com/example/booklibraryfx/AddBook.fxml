@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="505.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.booklibraryfx.AddBookController">
+   <children>
+      <Label layoutX="239.0" layoutY="39.0" text="Add New Book">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label layoutX="114.0" layoutY="144.0" text="ISBN :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="408.0" layoutY="144.0" text="Title :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="377.0" layoutY="272.0" text="Threshold :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="381.0" layoutY="231.0" text="Quantity :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="406.0" layoutY="187.0" text="Price :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="231.0" text="Publication Year :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="84.0" layoutY="315.0" text="Authors :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="272.0" text="Category :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="187.0" text="Publisher :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="156.0" layoutY="142.0" />
+      <TextField layoutX="156.0" layoutY="185.0" />
+      <TextField layoutX="156.0" layoutY="229.0" />
+      <TextField layoutX="456.0" layoutY="142.0" />
+      <TextField layoutX="456.0" layoutY="185.0" />
+      <TextField layoutX="458.0" layoutY="229.0" prefHeight="26.0" prefWidth="149.0" />
+      <TextField layoutX="459.0" layoutY="270.0" prefHeight="26.0" prefWidth="149.0" />
+      <ComboBox layoutX="155.0" layoutY="270.0" prefWidth="150.0" visibleRowCount="5" />
+      <TextField layoutX="155.0" layoutY="312.0" prefHeight="62.0" prefWidth="150.0" />
+      <Button layoutX="337.0" layoutY="436.0" mnemonicParsing="false" text="Add Book" />
+      <Label layoutX="316.0" layoutY="335.0" text="Add comma separated author names" textFill="#9a8d8d" />
+   </children>
+</AnchorPane>
