@@ -132,6 +132,12 @@ public class ManagerMainController implements Initializable {
         price.setPrefWidth(70);
         price.setPrefHeight(20);
 
+        var totalQuantity = new Label("Quantity: " + book.getQuantity());
+        totalQuantity.setLayoutX(550);
+        totalQuantity.setLayoutY(55);
+        totalQuantity.setPrefHeight(20);
+        totalQuantity.setPrefWidth(100);
+
         var quantityField = new TextField();
         quantityField.setPromptText("Quantity");
         quantityField.setLayoutX(550);

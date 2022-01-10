@@ -114,17 +114,23 @@ public class UserMainController implements Initializable {
         price.setPrefWidth(70);
         price.setPrefHeight(20);
 
+        var totalQuantity = new Label("Quantity: " + book.getQuantity());
+        totalQuantity.setLayoutX(550);
+        totalQuantity.setLayoutY(55);
+        totalQuantity.setPrefHeight(20);
+        totalQuantity.setPrefWidth(100);
+
         var quantityField = new TextField();
         quantityField.setPromptText("Quantity");
         quantityField.setLayoutX(550);
-        quantityField.setLayoutY(50);
-        quantityField.setPrefHeight(30);
+        quantityField.setLayoutY(30);
+        quantityField.setPrefHeight(20);
         quantityField.setPrefWidth(100);
 
         var addToCartBth = new Button("Add to Cart");
         addToCartBth.setLayoutX(550);
-        addToCartBth.setLayoutY(10);
-        addToCartBth.setPrefHeight(30);
+        addToCartBth.setLayoutY(5);
+        addToCartBth.setPrefHeight(20);
         addToCartBth.setPrefWidth(100);
         addToCartBth.setOnAction(e -> {
             if(quantityField.getText().trim().equals("")) return;
