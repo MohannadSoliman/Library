@@ -23,7 +23,7 @@ public class UserMainController implements Initializable {
     @FXML
     TextField searchKey;
     @FXML
-    ComboBox attribute;
+    ComboBox<String> attribute;
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -32,7 +32,7 @@ public class UserMainController implements Initializable {
     }
 
     public void searchBooks() {
-        List<Book> result = BookSQL.getBook(searchKey.getText(), attribute.getValue().toString());
+        List<Book> result = BookSQL.getBook(searchKey.getText(), attribute.getValue());
         searchKey.setText("");
         if(result == null) result = new ArrayList<>();
         viewSearchResults(result);
