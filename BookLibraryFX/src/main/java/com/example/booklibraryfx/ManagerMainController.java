@@ -1,6 +1,7 @@
 package com.example.booklibraryfx;
 
 import Backend.Entities.Book;
+import Backend.Entities.CartItem;
 import Backend.Entities.Order;
 import Backend.SQLCommands.BookSQL;
 import javafx.fxml.FXML;
@@ -34,6 +35,14 @@ public class ManagerMainController implements Initializable {
     VBox ordersList;
     @FXML
     ScrollPane orderListContainer;
+    @FXML
+    AnchorPane cartWindow;
+    @FXML
+    VBox cartList;
+    @FXML
+    Label totalPrice;
+    @FXML
+    Button viewCartItemsBtn;
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -50,21 +59,39 @@ public class ManagerMainController implements Initializable {
 
     public void viewOrders() {
         showOrderListDialog();
+        ordersList.getChildren().clear();
 
         List<Order> orders = new ArrayList<>();
 
-        Order newOrder = new Order(123456, 12345, 30, "2020-12-12");
-        orders.add(newOrder);
-
+        if(orders == null) orders = new ArrayList<>();
         for(Order order: orders) {
             ordersList.getChildren().add(addOrderCard(order));
         }
     }
 
     private void viewSearchResults(List<Book> books) {
+        searchResults.getChildren().clear();
         for(Book book: books) {
             searchResults.getChildren().add(addBookCard(book));
         }
+    }
+
+    public void viewCartItems() {
+        cartList.getChildren().clear();
+        showCartItemsDialog();
+
+        List<CartItem> cartItems= new ArrayList<>();
+
+        if(cartItems == null) cartItems = new ArrayList<>();
+        for(CartItem cartItem: cartItems) {
+            cartList.getChildren().add(addCartItemCard(cartItem));
+        }
+
+        totalPrice.setText(""); //add total checkout price function here
+    }
+
+    public void checkout() {
+        // add checkout action here
     }
 
     private AnchorPane addBookCard(Book book) {
@@ -184,6 +211,62 @@ public class ManagerMainController implements Initializable {
         return card;
     }
 
+    public AnchorPane addCartItemCard(CartItem cartItem) {
+        AnchorPane card = new AnchorPane();
+        card.getStyleClass().add("list-card");
+        card.setPrefHeight(40);
+        card.setPrefWidth(700);
+
+        var bookTitle = new Label("Order Id: " + cartItem.getIsbn());
+        bookTitle.setLayoutX(10);
+        bookTitle.setLayoutY(10);
+        bookTitle.setPrefWidth(100);
+        bookTitle.setPrefHeight(20);
+
+        var isbnLabel = new Label("ISBN: " + cartItem.getIsbn());
+        isbnLabel.setLayoutX(140);
+        isbnLabel.setLayoutY(10);
+        isbnLabel.setPrefWidth(150);
+        isbnLabel.setPrefHeight(20);
+
+        var singlePrice = new Label("price: " + cartItem.getSinglePrice());
+        singlePrice.setLayoutX(260);
+        singlePrice.setLayoutY(10);
+        singlePrice.setPrefWidth(80);
+        singlePrice.setPrefHeight(20);
+
+        var quantityLabel = new Label("Quantity: " + cartItem.getQuantity());
+        quantityLabel.setLayoutX(350);
+        quantityLabel.setLayoutY(10);
+        quantityLabel.setPrefWidth(80);
+        quantityLabel.setPrefHeight(20);
+
+        var totalPrice = new Label("Total price: " + cartItem.getTotalPrice());
+        totalPrice.setLayoutX(450);
+        totalPrice.setLayoutY(10);
+        totalPrice.setPrefWidth(120);
+        totalPrice.setPrefHeight(20);
+
+        var removeBtn = new Button("Remove");
+        removeBtn.setLayoutX(600);
+        removeBtn.setLayoutY(5);
+        removeBtn.setPrefHeight(30);
+        removeBtn.setPrefWidth(80);
+        removeBtn.setOnAction(e -> {
+            int isbn = cartItem.getIsbn();
+            //call function to remove cart item
+        });
+
+        card.getChildren().add(bookTitle);
+        card.getChildren().add(isbnLabel);
+        card.getChildren().add(singlePrice);
+        card.getChildren().add(quantityLabel);
+        card.getChildren().add(totalPrice);
+        card.getChildren().add(removeBtn);
+        return card;
+    }
+
+
     private AnchorPane createParentCard() {
         AnchorPane card = new AnchorPane();
         card.getStyleClass().add("list-card");
@@ -215,6 +298,13 @@ public class ManagerMainController implements Initializable {
         ordersWindow.setVisible(false);
     }
 
+    private void showCartItemsDialog() {
+        cartWindow.setVisible(true);
+    }
+    public void closeCartItemsDialog() {
+        cartWindow.setVisible(false);
+    }
+
     public void showTotalSales() {
     }
 
@@ -223,14 +313,15 @@ public class ManagerMainController implements Initializable {
 
     public void showTop10SellingBooks() {
     }
-    
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         attribute.getItems().removeAll(attribute.getItems());
         attribute.getItems().addAll("Title", "ISBN", "Publisher", "Author", "Category");
         attribute.getSelectionModel().select("Title");
-        reportPop.setVisible(false);
+        closeReportPopUp();
         closeOrdersListPopUp();
+        closeCartItemsDialog();
     }
 }

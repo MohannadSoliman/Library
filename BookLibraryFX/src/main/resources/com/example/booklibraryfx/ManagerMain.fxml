@@ -96,5 +96,26 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="cartWindow" layoutX="75.0" layoutY="75.0" prefHeight="470.0" prefWidth="800.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <Button fx:id="cartCancel" layoutX="770.0" layoutY="6.0" mnemonicParsing="false" onAction="#closeCartItemsDialog" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+            <ScrollPane fx:id="orderListContainer1" hbarPolicy="NEVER" layoutX="20.0" layoutY="35.0" prefHeight="370.0" prefWidth="760.0" style="-fx-background-color: white;">
+               <content>
+                  <VBox fx:id="cartList" prefHeight="370.0" prefWidth="740.0" style="-fx-background-color: white;" />
+               </content>
+            </ScrollPane>
+            <Button layoutX="432.0" layoutY="426.0" maxWidth="191.0" mnemonicParsing="false" onAction="#checkout" prefHeight="30.0" prefWidth="150.0" text="Checkout">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="610.0" layoutY="426.0" prefHeight="30.0" prefWidth="37.0" style="-fx-background-color: white;" text="Total">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalPrice" layoutX="647.0" layoutY="426.0" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: white; -fx-border-color: black;" textAlignment="CENTER" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
