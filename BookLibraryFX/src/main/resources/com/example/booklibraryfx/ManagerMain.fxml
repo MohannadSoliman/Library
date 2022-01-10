@@ -22,7 +22,7 @@
                 <Font size="13.0" />
             </font>
         </Button>
-        <Button fx:id="viewCartItemsBtn" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="118.0" text="View Cart">
+        <Button fx:id="viewCartItemsBtn" layoutX="42.0" layoutY="186.0" mnemonicParsing="false" onAction="#viewCartItems" prefHeight="34.0" prefWidth="118.0" text="View Cart">
             <font>
                 <Font size="13.0" />
             </font>

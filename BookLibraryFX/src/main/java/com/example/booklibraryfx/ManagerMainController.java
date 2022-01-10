@@ -1,5 +1,6 @@
 package com.example.booklibraryfx;
 
+import Backend.DTOs.BookDTO;
 import Backend.Entities.Book;
 import Backend.Entities.CartItem;
 import Backend.Entities.Order;
@@ -93,7 +94,6 @@ public class ManagerMainController implements Initializable {
         showCartItemsDialog();
 
         List<CartItem> cartItems= new ArrayList<>();
-
         if(cartItems == null) cartItems = new ArrayList<>();
         for(CartItem cartItem: cartItems) {
             cartList.getChildren().add(addCartItemCard(cartItem));
