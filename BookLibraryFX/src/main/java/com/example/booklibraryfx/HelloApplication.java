@@ -30,9 +30,10 @@ public class HelloApplication extends Application {
         Settings.managerScene = new Scene(fxmlLoaderManager.load());
 
         Settings.customerScene.getStylesheets().add(style);
+        Settings.managerScene.getStylesheets().add(style);
 
         stage.setTitle("Login");
-        stage.setScene(Settings.customerScene);
+        stage.setScene(Settings.managerScene);
         stage.show();
     }
 

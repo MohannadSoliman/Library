@@ -44,7 +44,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="41.0" layoutY="419.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="118.0" text="Reports">
+      <Button layoutX="41.0" layoutY="419.0" mnemonicParsing="false" onAction="#showReportDialog" prefHeight="34.0" prefWidth="118.0" text="Reports">
          <font>
             <Font size="13.0" />
          </font>
@@ -78,5 +78,13 @@
             <VBox fx:id="searchResults" prefHeight="440.0" prefWidth="720.0" />
          </content>
       </ScrollPane>
+      <AnchorPane fx:id="reportPop" layoutX="235.0" layoutY="230.0" prefHeight="170.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <Button layoutX="50.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Total sales for books in previous month" />
+            <Button layoutX="50.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Top 5 Cutomers for last 3 months" />
+            <Button layoutX="50.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Top 10 selling books in last 3 months" />
+            <Button fx:id="popCancelBtn" layoutX="469.0" layoutY="6.0" mnemonicParsing="false" onAction="#closePopUp" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

@@ -24,6 +24,10 @@ public class ManagerMainController implements Initializable {
     TextField searchKey;
     @FXML
     ComboBox<String> attribute;
+    @FXML
+    AnchorPane reportPop;
+    @FXML
+    Button popCancelBtn;
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -130,10 +134,28 @@ public class ManagerMainController implements Initializable {
         return authorsStr.toString();
     }
 
+    public void showReportDialog() {
+        reportPop.setVisible(true);
+    }
+
+    public void closePopUp() {
+        reportPop.setVisible(false);
+    }
+
+    public void showTotalSales() {
+    }
+
+    public void showTop5Customers() {
+    }
+
+    public void showTop10SellingBooks() {
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         attribute.getItems().removeAll(attribute.getItems());
         attribute.getItems().addAll("Title", "ISBN", "Publisher", "Author", "Category");
         attribute.getSelectionModel().select("Title");
+        reportPop.setVisible(false);
     }
 }
