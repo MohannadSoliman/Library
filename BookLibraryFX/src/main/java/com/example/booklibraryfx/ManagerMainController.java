@@ -1,13 +1,11 @@
 package com.example.booklibraryfx;
 
 import Backend.Entities.Book;
+import Backend.Entities.Order;
 import Backend.SQLCommands.BookSQL;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
@@ -28,6 +26,14 @@ public class ManagerMainController implements Initializable {
     AnchorPane reportPop;
     @FXML
     Button popCancelBtn;
+    @FXML
+    Button ordersListCancel;
+    @FXML
+    AnchorPane ordersWindow;
+    @FXML
+    VBox ordersList;
+    @FXML
+    ScrollPane orderListContainer;
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -40,6 +46,19 @@ public class ManagerMainController implements Initializable {
         searchKey.setText("");
         if(result == null) result = new ArrayList<>();
         viewSearchResults(result);
+    }
+
+    public void viewOrders() {
+        showOrderListDialog();
+
+        List<Order> orders = new ArrayList<>();
+
+        Order newOrder = new Order(123456, 12345, 30, "2020-12-12");
+        orders.add(newOrder);
+
+        for(Order order: orders) {
+            ordersList.getChildren().add(addOrderCard(order));
+        }
     }
 
     private void viewSearchResults(List<Book> books) {
@@ -117,6 +136,54 @@ public class ManagerMainController implements Initializable {
         return card;
     }
 
+    public AnchorPane addOrderCard(Order order) {
+        AnchorPane card = new AnchorPane();
+        card.getStyleClass().add("list-card");
+        card.setPrefHeight(40);
+        card.setPrefWidth(700);
+
+        var orderIdLabel = new Label("Order Id: " + order.getIsbn());
+        orderIdLabel.setLayoutX(10);
+        orderIdLabel.setLayoutY(10);
+        orderIdLabel.setPrefWidth(100);
+        orderIdLabel.setPrefHeight(20);
+
+        var isbnLabel = new Label("ISBN: " + order.getIsbn());
+        isbnLabel.setLayoutX(150);
+        isbnLabel.setLayoutY(10);
+        isbnLabel.setPrefWidth(150);
+        isbnLabel.setPrefHeight(20);
+
+        var quantityLabel = new Label("Quantity: " + order.getQuantity());
+        quantityLabel.setLayoutX(250);
+        quantityLabel.setLayoutY(10);
+        quantityLabel.setPrefWidth(70);
+        quantityLabel.setPrefHeight(20);
+
+        var dateLabel = new Label("Date: " + order.getDate());
+        dateLabel.setLayoutX(350);
+        dateLabel.setLayoutY(10);
+        dateLabel.setPrefWidth(100);
+        dateLabel.setPrefHeight(20);
+
+        var confirmBtn = new Button("Confirm");
+        confirmBtn.setLayoutX(550);
+        confirmBtn.setLayoutY(5);
+        confirmBtn.setPrefHeight(30);
+        confirmBtn.setPrefWidth(100);
+        confirmBtn.setOnAction(e -> {
+            int orderId = order.getOrderID();
+            //call function to confirm order
+        });
+
+        card.getChildren().add(orderIdLabel);
+        card.getChildren().add(isbnLabel);
+        card.getChildren().add(quantityLabel);
+        card.getChildren().add(dateLabel);
+        card.getChildren().add(confirmBtn);
+        return card;
+    }
+
     private AnchorPane createParentCard() {
         AnchorPane card = new AnchorPane();
         card.getStyleClass().add("list-card");
@@ -137,9 +204,15 @@ public class ManagerMainController implements Initializable {
     public void showReportDialog() {
         reportPop.setVisible(true);
     }
-
-    public void closePopUp() {
+    public void closeReportPopUp() {
         reportPop.setVisible(false);
+    }
+
+    private void showOrderListDialog() {
+        ordersWindow.setVisible(true);
+    }
+    public void closeOrdersListPopUp() {
+        ordersWindow.setVisible(false);
     }
 
     public void showTotalSales() {
@@ -157,5 +230,6 @@ public class ManagerMainController implements Initializable {
         attribute.getItems().addAll("Title", "ISBN", "Publisher", "Author", "Category");
         attribute.getSelectionModel().select("Title");
         reportPop.setVisible(false);
+        closeOrdersListPopUp();
     }
 }

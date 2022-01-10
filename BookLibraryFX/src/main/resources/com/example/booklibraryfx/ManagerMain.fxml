@@ -39,7 +39,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button layoutX="41.0" layoutY="360.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="118.0" text="Confirm Orders">
+      <Button layoutX="41.0" layoutY="360.0" mnemonicParsing="false" onAction="#viewOrders" prefHeight="34.0" prefWidth="118.0" text="Confirm Orders">
          <font>
             <Font size="13.0" />
          </font>
@@ -83,7 +83,17 @@
             <Button layoutX="50.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Total sales for books in previous month" />
             <Button layoutX="50.0" layoutY="70.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Top 5 Cutomers for last 3 months" />
             <Button layoutX="50.0" layoutY="120.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="400.0" text="Top 10 selling books in last 3 months" />
-            <Button fx:id="popCancelBtn" layoutX="469.0" layoutY="6.0" mnemonicParsing="false" onAction="#closePopUp" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+            <Button fx:id="popCancelBtn" layoutX="469.0" layoutY="6.0" mnemonicParsing="false" onAction="#closeReportPopUp" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ordersWindow" layoutX="75.0" layoutY="75.0" prefHeight="440.0" prefWidth="800.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <Button fx:id="ordersListCancel" layoutX="770.0" layoutY="6.0" mnemonicParsing="false" onAction="#closeOrdersListPopUp" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+            <ScrollPane fx:id="orderListContainer" hbarPolicy="NEVER" layoutX="20.0" layoutY="35.0" prefHeight="370.0" prefWidth="760.0" style="-fx-background-color: white;">
+               <content>
+                  <VBox fx:id="ordersList" prefHeight="370.0" prefWidth="740.0" style="-fx-background-color: white;" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
     </children>
