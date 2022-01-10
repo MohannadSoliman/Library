@@ -43,6 +43,18 @@ public class ManagerMainController implements Initializable {
     Label totalPrice;
     @FXML
     Button viewCartItemsBtn;
+    @FXML
+    TextField creditCardNo;
+    @FXML
+    TextField expireDate;
+    @FXML
+    Button purchaseBtn;
+    @FXML
+    Label errorMsg;
+    @FXML
+    AnchorPane creditCardInfoWindow;
+    @FXML
+    Button cancelPurchase;
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -91,7 +103,24 @@ public class ManagerMainController implements Initializable {
     }
 
     public void checkout() {
-        // add checkout action here
+        errorMsg.setText("");
+        creditCardNo.setText("");
+        expireDate.setText("");
+        showCreditCardInfoDialog();
+    }
+
+    public void purchase() {
+        String ccNo = creditCardNo.getText();
+        String expD  = expireDate.getText();
+        boolean isValid = false; // function here
+        if(!isValid) {
+            errorMsg.setText("Purchase Info are not correct!!");
+        }
+        else {
+            closeCreditCardInfoDialog();
+            cartList.getChildren().clear();
+            totalPrice.setText("");
+        }
     }
 
     private AnchorPane addBookCard(Book book) {
@@ -305,10 +334,20 @@ public class ManagerMainController implements Initializable {
     }
 
     private void showCartItemsDialog() {
+        errorMsg.setText("");
+        creditCardNo.setText("");
+        expireDate.setText("");
         cartWindow.setVisible(true);
     }
     public void closeCartItemsDialog() {
         cartWindow.setVisible(false);
+    }
+
+    private void showCreditCardInfoDialog() {
+        creditCardInfoWindow.setVisible(true);
+    }
+    public void closeCreditCardInfoDialog() {
+        creditCardInfoWindow.setVisible(false);
     }
 
     public void showTotalSales() {
@@ -329,5 +368,6 @@ public class ManagerMainController implements Initializable {
         closeReportPopUp();
         closeOrdersListPopUp();
         closeCartItemsDialog();
+        closeCreditCardInfoDialog();
     }
 }

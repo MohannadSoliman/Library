@@ -37,6 +37,19 @@ public class UserMainController implements Initializable {
     Label totalPrice;
     @FXML
     Button viewCartItemsBtn;
+    @FXML
+    TextField creditCardNo;
+    @FXML
+    TextField expireDate;
+    @FXML
+    Button purchaseBtn;
+    @FXML
+    Label errorMsg;
+    @FXML
+    AnchorPane creditCardInfoWindow;
+    @FXML
+    Button cancelPurchase;
+
 
     public void switchToEditProfile() throws IOException {
         Settings.stage.setScene(Settings.editUser);
@@ -73,7 +86,24 @@ public class UserMainController implements Initializable {
     }
 
     public void checkout() {
-        // add checkout action here
+        errorMsg.setText("");
+        creditCardNo.setText("");
+        expireDate.setText("");
+        showCreditCardInfoDialog();
+    }
+
+    public void purchase() {
+        String ccNo = creditCardNo.getText();
+        String expD  = expireDate.getText();
+        boolean isValid = false; // function here
+        if(!isValid) {
+            errorMsg.setText("Purchase Info are not correct!!");
+        }
+        else {
+            closeCreditCardInfoDialog();
+            cartList.getChildren().clear();
+            totalPrice.setText("");
+        }
     }
 
     private AnchorPane addBookCard(Book book) {
@@ -230,11 +260,19 @@ public class UserMainController implements Initializable {
         cartWindow.setVisible(false);
     }
 
+    private void showCreditCardInfoDialog() {
+        creditCardInfoWindow.setVisible(true);
+    }
+    public void closeCreditCardInfoDialog() {
+        creditCardInfoWindow.setVisible(false);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         attribute.getItems().removeAll(attribute.getItems());
         attribute.getItems().addAll("Title", "ISBN", "Publisher", "Author", "Category");
         attribute.getSelectionModel().select("Title");
         closeCartItemsDialog();
+        closeCreditCardInfoDialog();
     }
 }

@@ -77,6 +77,38 @@
                </font>
             </Label>
             <Label fx:id="totalPrice" layoutX="647.0" layoutY="426.0" prefHeight="30.0" prefWidth="132.0" style="-fx-background-color: white; -fx-border-color: black;" textAlignment="CENTER" />
+            <AnchorPane fx:id="creditCardInfoWindow" layoutX="250.0" layoutY="50.0" prefHeight="270.0" prefWidth="300.0" style="-fx-border-color: black; -fx-background-color: white;">
+               <children>
+                  <Label layoutX="25.0" layoutY="35.0" style="-fx-background-color: white;" text="Credit card number">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="110.0" style="-fx-background-color: white;" text="Expiration date">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="creditCardNo" layoutX="25.0" layoutY="60.0" prefHeight="30.0" prefWidth="250.0" />
+                  <TextField fx:id="expireDate" layoutX="25.0" layoutY="135.0" prefHeight="30.0" prefWidth="250.0" />
+                  <Button fx:id="purchaseBtn" layoutX="100.0" layoutY="212.0" mnemonicParsing="false" onAction="#purchase" prefHeight="30.0" prefWidth="100.0" text="Purchase">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="25.0" layoutY="175.0" prefHeight="30.0" prefWidth="250.0" style="-fx-text-fill: red; -fx-background-color: white;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="errorMsg" layoutX="25.0" layoutY="175.0" prefHeight="30.0" prefWidth="250.0" style="-fx-text-fill: red; -fx-background-color: white;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="cancelPurchase" layoutX="275.0" mnemonicParsing="false" onAction="#closeCreditCardInfoDialog" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: red; -fx-text-fill: white;" text="x" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
